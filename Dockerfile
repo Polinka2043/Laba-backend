@@ -1,8 +1,12 @@
 FROM python:3.12-slim
-RUN apt-get update -y
-RUN apt-get install -y pip libpython3-dev build-essential
-COPY . /backend
-WORKDIR /backend
+WORKDIR /app
+
+COPY requirements.txt .
+
 RUN pip install -r requirements.txt
-ENTRYPOINT ['python']
-CMD ['app.py']
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["flask", "run", "--host=0.0.0.0"]
