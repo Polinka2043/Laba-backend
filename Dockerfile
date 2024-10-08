@@ -7,9 +7,10 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 RUN apt-get update && apt-get install -y git
-RUN git checkout v1.0
 
 COPY . .
+
+RUN git checkout v1.0
 
 EXPOSE 5001
 
