@@ -4,8 +4,7 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt --no-cache-dir
-RUN pip install flask==2.0.1 werkzeug==2.0.1
+RUN pip install -r requirements.txt
 RUN apt-get update && apt-get install -y git
 COPY . .
 
@@ -13,5 +12,5 @@ RUN git stash
 RUN git checkout v1.0
 
 EXPOSE 5001
-
+ENTRYPOINT ['python']
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5001"]
