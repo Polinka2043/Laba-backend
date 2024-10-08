@@ -4,7 +4,8 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt --no-cache-dir
+RUN pip install flask==2.0.1 werkzeug==2.0.1
 RUN apt-get update && apt-get install -y git
 COPY . .
 
