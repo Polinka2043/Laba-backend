@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y git
 
 COPY . .
 
+RUN git stash
 RUN git checkout v1.0
+RUN git stash pop
 
 EXPOSE 5001
 
