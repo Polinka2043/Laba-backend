@@ -5,7 +5,7 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY app.py .
 
 EXPOSE 5000
 ENV FLASK_APP=app.py
