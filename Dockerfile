@@ -6,7 +6,7 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-RUN git checkout v2.0
+RUN git checkout v1.0
 
 COPY . .
 
