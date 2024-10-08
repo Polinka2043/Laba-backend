@@ -12,5 +12,4 @@ RUN git stash
 RUN git checkout v1.0
 
 EXPOSE 5001
-ENTRYPOINT ['python']
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5001"]
