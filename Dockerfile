@@ -6,6 +6,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+RUN git checkout v2.0
+
 COPY . .
 
 EXPOSE 5001
