@@ -6,5 +6,5 @@ COPY . .
 RUN git stash
 RUN git checkout v2.0
 EXPOSE 5001
-ENV FLASK_APP=back
-CMD ["flask", "run", "--host=127.0.0.1", "--port=5001"]
+ENTRYPOINT ["python3"]
+CMD ["back.py"]
