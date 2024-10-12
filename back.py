@@ -26,6 +26,4 @@ def receive_data():
             return jsonify({'error333': {'message': str(e), 'code': 500}}), 500
 
 if __name__ == '__main__':
-    backend_ip = os.environ['BACKEND_IP']
-    backend_port = os.environ['BACKEND_PORT']
-    app.run(debug=True, host=backend_ip, port=backend_port)
+    app.run(debug=True, host='127.0.0.1', port=5001)
