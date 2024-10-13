@@ -28,7 +28,7 @@ def receive_data():
             return jsonify({'error000': {'message': str(e), 'code': 500}}), 500
     elif request.method == 'GET':
         try:
-            with open('data.txt', 'r') as f:
+            with open('data.txt', 'r', encoding='utf-8', errors='replace') as f:
                 lines = f.readlines()
                 if lines:
                     last_line = lines[-1].strip()
