@@ -2,9 +2,18 @@ from flask import Flask, request, jsonify
 import os
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def index():
+    return '<h1>Welcome to the backend!</h1>'
+
+@app.route('/favicon.ico', methods=['GET'])
+def favicon():
+    return '', 404
+
 @app.route('/api/data', methods=['POST', 'GET'])
 def receive_data():
     if request.method == 'POST':
+        # Same as before
         if request.headers['Content-Type'] != 'application/json':
             return jsonify({'error123': {'message': 'Invalid content type', 'code': 415}}), 415
         data = request.get_json()
@@ -20,8 +29,12 @@ def receive_data():
     elif request.method == 'GET':
         try:
             with open('data.txt', 'r') as f:
-                data = f.read()
-            return jsonify({'data': data})
+                lines = f.readlines()
+                if lines:
+                    last_line = lines[-1].strip()
+                    return jsonify({'data': last_line})
+                else:
+                    return jsonify({'data': 'No data available'})
         except IOError as e:
             return jsonify({'error333': {'message': str(e), 'code': 500}}), 500
 
